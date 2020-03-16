@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ePRJ.Models.Account>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Report</title>
+    <style>
+        td {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table class="table" style="border:1px solid black">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAddress)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAddress)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

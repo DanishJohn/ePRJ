@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Reports</h2>
+@section body {
+    <a href="@Url.Content("~/Admin/StockReport")" class="btn btn-default btn-outline-dark" >Stock availability report</a>
+    <br /> <br />
+    <a href="@Url.Content("~/Admin/CustomerReport")" class="btn btn-default btn-outline-dark">Customer Information Report</a>
+    <br /><br />
+    <a href="@Url.Content("~/Admin/VehicleReport")" class="btn btn-default btn-outline-dark">Vehicle Information Report</a>
+    <a href="@Url.Content("~/Admin/WaitingList")" class="btn btn-default btn-outline-dark">Waiting list</a>
+    }
+

@@ -1,0 +1,74 @@
+﻿@model ePRJ.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+@section body{
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_stock)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_description)
+        </dt>
+        <dd>
+            @Html.TextAreaFor(model => model.vehicle_description,htmlAttributes: new { @readonly = "true"})
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.img_path)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/Images/" + Path.GetFileName(Model.img_path))" width="300" height="300"/>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vehicle_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    }

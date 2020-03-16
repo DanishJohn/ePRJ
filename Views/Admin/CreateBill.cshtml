@@ -1,0 +1,77 @@
+﻿@model ePRJ.Models.Bill
+
+@{
+    ViewBag.Title = "CreateBill";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CreateBill</h2>
+@section body{
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Bill</h4>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.vehicle_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.vehicle_id, new { htmlAttributes = new { @class = "form-control",@readonly = true, @Value = ViewBag.BillData[0] } })
+                    @Html.ValidationMessageFor(model => model.vehicle_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.vehicle_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.vehicle_name, new { htmlAttributes = new {@Value = ViewBag.BillData[1], @class = "form-control",@readonly=true } })
+                    @Html.ValidationMessageFor(model => model.vehicle_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.vehicle_brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.vehicle_brand, new { htmlAttributes = new { @class = "form-control",@Value = ViewBag.BillData[2],@readonly = true } })
+                    @Html.ValidationMessageFor(model => model.vehicle_brand, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.vehicle_price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.vehicle_price, new { htmlAttributes = new { @class = "form-control",@Value = ViewBag.BillData[3], @readonly = true } })
+                    @Html.ValidationMessageFor(model => model.vehicle_price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.quantity, new { @class = "form-control", @min = 0, @max = ViewBag.BillData[4], @type="number" } )
+                    @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+}

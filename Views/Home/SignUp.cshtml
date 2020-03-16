@@ -1,0 +1,76 @@
+﻿@model ePRJ.Models.Account
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+    <head>
+        <style>
+            form {
+                border: 2px solid black;
+                width: 500px;
+                margin: 2% auto 2% auto;
+                text-align: left;
+            }
+        </style>
+        @Styles.Render("~/Content/css");
+    </head>
+    <body>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="container">
+                <form class="form-horizontal" name="formreg1">
+                    <h4 class="form-heading" style="margin-bottom: 15px;">Register</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserEmail,new { @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserPassword, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(model => model.UserPassword,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserFullName, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserFullName,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserFullName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserAddress, htmlAttributes: new { @class = "control-label col-sm-4" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserAddress, new { @class = "form-control"  })
+                            @Html.ValidationMessageFor(model => model.UserAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-sm-4">
+                            <input type="submit" value="Create" class="btn btn-success btn-primary" style="margin: 10% auto 10% auto" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+    </body>
+@section scripts {
+    <script>
+        var data = "@ViewBag.Message";
+        if (data != "") {
+            alert(data);
+        }
+
+    </script>
+    }

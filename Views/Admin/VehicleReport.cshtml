@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ePRJ.Models.Vehicle>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VehicleReport</title>
+    <style>
+        td {
+            border:1px solid black
+        }
+
+    </style>
+</head>
+<body>
+    <table class="table" style="border:1px solid black">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_description)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehicle_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehicle_brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehicle_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehicle_stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehicle_description)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ePRJ.Models.Vehicle>
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-2" style="text-align:center">
+        @Html.Label("Search")
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+        {
+            <b>Vehicle Name:</b> @Html.TextBox("vehicleName")
+            <b>Vehicle's Brand:</b>@Html.TextBox("vehicleBrand")
+            <br />
+            <p><b>Price range:</b></p>
+            <b>Min: @Html.TextBox("minimum",0,new { @required="true" })</b>   <b>Max:@Html.TextBox("maximum",Model.Max(b => b.vehicle_price),new { @required = "true" })</b>
+            <input type="submit" value="Filter" />
+        }
+
+    </div>
+    <div class="col-md-10">
+        <div class="row" style="position:relative">
+            @foreach (var item in Model)
+            {
+
+                <div class="item col-md-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img src="@Url.Content("~/Images/" + Path.GetFileName(@item.img_path))" />
+                    </div>
+                    <div class="caption">
+                        <h3>@Html.ActionLink(@item.vehicle_name, "Details", "Home", new { id = @item.vehicle_id }, null)</h3>
+                        <p>$ @item.vehicle_price</p>
+                        <p>Brand: @item.vehicle_brand</p>
+                        <p>Stock: @item.vehicle_stock</p>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+</div>
+

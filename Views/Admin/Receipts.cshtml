@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ePRJ.Models.Receipts>
+
+@{
+    ViewBag.Title = "Receipt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Receipt</h2>
+@section body{
+    <p>
+        @Html.ActionLink("Create New", "CreateReceipt")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.receipt_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.receipt_status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.receipt_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicle_id)
+                </td>
+                <td>
+                    @if (item.receipt_status == true)
+                    {
+                        <b>Received</b>
+                    } else
+                    {
+                        <b>Not Received</b>
+                    }
+                </td>
+                <td>
+                    <!-- Legacy code, was used to test functionality and will still be kept in case it is needed again. 
+                        @Html.ActionLink("Status Change", "ChangeStats", new {  id= item.vehicle_id },htmlAttributes: new { onclick="return Sure(\"" +item.vehicle_id +"\")" })
+                        -->
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+@section scripts {
+    <script>
+        function Sure(id) {
+            if (confirm("Do you want to change " + id + " status?"))
+                return true;
+            else return false;
+    }
+        if (@ViewBag.Message != null) {
+            alert("@ViewBag.Message");
+        }
+    </script>
+    
+    }

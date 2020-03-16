@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ePRJ.Models.Service>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WaitingList</title>
+</head>
+<body>
+    <p>
+        Number of Customer Waiting: @ViewBag.Waiting
+    </p>
+    <table class="table" style="border:1px solid black">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.service_customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_vehicle_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_status)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.service_customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.service_vehicle_id)
+            </td>
+            <td>
+                @if(item.service_status)
+                {
+                    <div>Issued</div>
+                }
+                else
+                {
+                    <div>Waiting</div>
+                }
+
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

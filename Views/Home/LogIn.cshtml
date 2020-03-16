@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_GeneralLayout.cshtml";
+}
+<head>
+    <style>
+        form {
+        border: 2px solid black;
+        width: 500px;
+        height: 350px;
+        margin: 5% auto 5% auto;
+        text-align: left;
+        }
+    </style>
+    @Styles.Render("~/Content/css");
+</head>
+<body>
+    @using (Html.BeginForm("LogIn","Home",FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <form class="form-horizontal" name="formreg1">
+                <h4 class="form-heading" style="margin-bottom: 15px;">Log In</h4>
+                <div class="form-horizontal">
+                    <hr />
+                    <div class="form-group" style="margin: 15px auto 15px auto">
+                        <div class="col-md-3 control-label">
+                           E-mail:
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBox("mail",null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin: 15px auto 15px auto">
+                        <div class="col-md-3 control-label">
+                            Password:
+                        </div>
+                        <div class="col-md-7">
+                            @Html.Password("pass",null, new { @class = "form-control" })                       
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-10">
+                            <input type="submit" value="Login" class="btn btn-success" style="margin-left: 5%"/>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+      }
+
+    </body>
+@section scripts {
+    <script>
+        var data = "@ViewBag.Message";
+        if (data != "") {
+            alert(data);
+        }
+
+    </script>
+    }

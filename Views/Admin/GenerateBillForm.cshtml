@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "GenerateBillForm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Generate Bill Form</h2>
+@section body {
+    @using(Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-10">
+                    Vehicle's ID: @Html.DropDownList("id",new SelectList(ViewBag.idList,"Text","Value"))
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Generate Bill" />
+            </div>
+        </div>
+
+    }
+    }
+@section scripts {
+    <script>
+        var data = "@ViewBag.Error";
+        if (data != "") {
+            alert(data);
+        }
+
+    </script>
+    }
+

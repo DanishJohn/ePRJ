@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ePRJ.Models.Service>
+
+@{
+    ViewBag.Title = "Service";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Service</h2>
+@section body{
+    <p>
+        @Html.ActionLink("Create New", "CreateService")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.service_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_vehicle_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.service_status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.service_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.service_customer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.service_vehicle_id)
+                </td>
+                <td>
+                    @if (item.service_status)
+                    {
+                        <div>Issued</div>
+                    }
+                    else
+                    {
+                        <div>Not processed</div>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+@section scripts {
+    <script>
+        var data = "@ViewBag.Error";
+        if (data != "") {
+            alert(data);
+        }
+
+    </script>
+    }

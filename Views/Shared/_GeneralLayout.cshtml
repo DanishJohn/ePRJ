@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-static-top top-nav">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="@Url.Action("Index","Home")" class="navbar-brand" style="text-shadow: 2px 2px 2px">Sky's Showroom</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="">
+                    <a href=@Url.Action("Index","Home")><span class="glyphicon glyphicon-home"></span><b> Home</b></a>
+                </li>
+                <li><a href="@Url.Action("Product","Home")"><b>Products</b></a></li>
+            </ul>
+            @if (Request.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("Profiles","User")"><span class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
+                    <li><a href="@Url.Action("Logout","Home")"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("SignUp","Home")"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <li><a href="@Url.Action("LogIn","Home")"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                </ul>
+            }
+
+            </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <footer class="footer-bottom footer-style">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-5">
+                    <p>
+                        We are a respectable and reputable resellers, where most of the backpacks and bags will be
+                        available. We also pride ourselves in our ability to deliver the best customer experience.
+                    </p>
+                    <p><span class="glyphicon glyphicon-copyright-mark"></span> 2018 Team. All Rights Reserved</p>
+
+                </div>
+
+                <div class="col-md-4">
+                    <h4>Contacts</h4>
+                    <dl>
+                        <dt>Address:</dt>
+                        <dd>590 CMT, HCM</dd>
+                    </dl>
+                    <dl>
+                        <dt>Email:</dt>
+                        <dd>jasoncowboy2@gmail.com</dd>
+                    </dl>
+                    <dl>
+                        <dt>Telephone:</dt>
+                        <dd>8798793124</dd>
+                    </dl>
+                </div>
+            </div>
+
+
+        </div>
+
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ePRJ.Models.Bill>
+
+@{
+    ViewBag.Title = "Purchase";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Purchase Bills</h2>
+@section body {
+    <p>
+        @Html.ActionLink("Create New Bill", "GenerateBillForm")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.order_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_email)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.order_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicle_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicle_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicle_brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vehicle_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @(item.vehicle_price * item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.user_email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditBill", new { id = item.order_id }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
